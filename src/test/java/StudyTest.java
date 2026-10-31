@@ -1,0 +1,42 @@
+import com.codeborne.selenide.Configuration;
+import org.junit.jupiter.api.Test;
+
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Selenide.*;
+
+public class StudyTest {
+
+  @Test
+  void studyPriceShouldBe47000Test() {
+    Configuration.browser = "chrome"; // выбор браузера
+    Configuration.pageLoadTimeout = 100000; // таймаут прогрузки страницы
+    Configuration.timeout = 100000; // таймаут прогрузки элементов
+
+    open("https://ya.ru/");
+    $("textarea.search3__input").setValue("bulgakov qa");
+    $("button.search3__button").click();
+    //$(".DistributionButtonClose").click();
+    $(byText("ivanbulgakovqa.ru")).click();
+    switchTo().window(1);
+    $$(".t-menu__list li").last().click();
+    $x("/html/body/div[1]/div[42]/div/div/div[32]/div/a/div/span").shouldHave(text("Хочу вкатиться в QA")).click();
+    $(byText("Бегу оплачивать")).click();
+
+    switchTo().window(2);
+    $("span.ant-select-selection-wrap").click();
+    $(byText("RUB")).click();
+    $(".styles-module__bFURDW__header3").shouldHave(text("₽ 47 000.00"));
+  }
+
+  @Test
+  void SearchSelenide (){
+    open("https://github.com");
+    $("[aria-label = 'Search or jump to, type / to search']").click();
+    $("[aria-label='Search or jump to']").setValue("Selenide").pressEnter();
+    $("[href = '/selenide/selenide']").click();
+    $("[href='/selenide/selenide/wiki']").click();
+    $("[href='/selenide/selenide/wiki/SoftAssertions']").click();
+    $("body").shouldHave(text("Using JUnit5 extend test class:"));
+}
+}

@@ -1,7 +1,4 @@
-import Pages.BulgakovPage;
-import Pages.LavaTopPage;
-import Pages.SearchYandexPages;
-import Pages.SearchYandexPagesResults;
+import Pages.*;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.Test;
 
@@ -28,7 +25,9 @@ public class StudyTest {
             .clickResults("ivanbulgakovqa.ru");
     switchTo().window(1);
     bulgakovPage
-            .clickPrice().clickVkat().goPay();
+            .clickPrice()
+            .clickVkat()
+            .goPay();
     switchTo().window(2);
     lavaTopPage.currencyDropdown()
             .clickRub().checkSum();
@@ -36,12 +35,16 @@ public class StudyTest {
 
   @Test
   void SearchSelenide (){
-    open("https://github.com");
-    $("[aria-label = 'Search or jump to, type / to search']").click();
-    $("[aria-label='Search or jump to']").setValue("Selenide").pressEnter();
-    $("[href = '/selenide/selenide']").click();
-    $("[href='/selenide/selenide/wiki']").click();
-    $("[href='/selenide/selenide/wiki/SoftAssertions']").click();
-    $("body").shouldHave(text("Using JUnit5 extend test class:"));
+    GitHubPages gitHubPages = new GitHubPages();
+
+    open("https://github.com", GitHubPages.class)
+            .clickToInputSearch()
+            .inputSearchSelenide()
+            .clickSelenideToList()
+            .goToWikiTab()
+            .goToPagesSoftAssertions()
+            .goToPagesSoftAssertions();
+
+
 }
 }

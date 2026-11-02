@@ -1,32 +1,37 @@
+import Pages.BulgakovPage;
+import Pages.LavaTopPage;
+import Pages.SearchYandexPages;
+import Pages.SearchYandexPagesResults;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.files.DownloadActions.click;
 
 public class StudyTest {
 
   @Test
   void studyPriceShouldBe47000Test() {
     Configuration.browser = "chrome"; // выбор браузера
-    Configuration.pageLoadTimeout = 100000; // таймаут прогрузки страницы
-    Configuration.timeout = 100000; // таймаут прогрузки элементов
+    //Configuration.pageLoadTimeout = 100000; // таймаут прогрузки страницы
+    Configuration.timeout = 6000; // таймаут прогрузки элементов
 
-    open("https://ya.ru/");
-    $("textarea.search3__input").setValue("bulgakov qa");
-    $("button.search3__button").click();
-    //$(".DistributionButtonClose").click();
-    $(byText("ivanbulgakovqa.ru")).click();
+    BulgakovPage bulgakovPage = new BulgakovPage();
+    LavaTopPage lavaTopPage = new LavaTopPage();
+
+
+    open("https://ya.ru/", SearchYandexPages.class)
+            .search("bulgakov qa")
+            .clickSearch()
+            .clickResults("ivanbulgakovqa.ru");
     switchTo().window(1);
-    $$(".t-menu__list li").last().click();
-    $x("/html/body/div[1]/div[42]/div/div/div[32]/div/a/div/span").shouldHave(text("Хочу вкатиться в QA")).click();
-    $(byText("Бегу оплачивать")).click();
-
+    bulgakovPage
+            .clickPrice().clickVkat().goPay();
     switchTo().window(2);
-    $("span.ant-select-selection-wrap").click();
-    $(byText("RUB")).click();
-    $(".styles-module__bFURDW__header3").shouldHave(text("₽ 47 000.00"));
+    lavaTopPage.currencyDropdown()
+            .clickRub().checkSum();
   }
 
   @Test

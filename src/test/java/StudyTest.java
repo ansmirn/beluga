@@ -44,6 +44,8 @@ public class StudyTest {
             .goToWikiTab()
             .goToPagesSoftAssertions()
             .goToPagesSoftAssertions();
+//    пишу камент тупа для создания новой бранч + ПР + камит +мерж
+//    прави по каметам в ПР
 
 
 }

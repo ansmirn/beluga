@@ -45,6 +45,7 @@ public class StudyTest {
             .goToPagesSoftAssertions()
             .goToPagesSoftAssertions();
 //    пишу камент тупа для создания новой бранч + ПР + камит +мерж
+//    прави по каметам в ПР
 
 
 }

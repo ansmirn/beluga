@@ -1,14 +1,14 @@
-package pages;
+package pages.github;
 
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.$;
 
-public class GitHubSearchResults {
+public class SearchResults {
     private final SelenideElement selenideLink = $("[href = '/selenide/selenide']");
 
-    public GitHubSelenideCodeTab openSelenideRepository() {
+    public SelenideCodeTab openSelenideRepository() {
         selenideLink.click();
-        return new GitHubSelenideCodeTab();
+        return new SelenideCodeTab();
     }
 }

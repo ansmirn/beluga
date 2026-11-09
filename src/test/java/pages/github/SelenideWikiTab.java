@@ -1,20 +1,20 @@
-package pages;
+package pages.github;
 
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 
-public class GitHubSelenideWikiTab {
+public class SelenideWikiTab {
     private final SelenideElement softAssertionsLink = $("[href='/selenide/selenide/wiki/SoftAssertions']");
     private final SelenideElement pageContent = $(".markdown-body");
 
-    public GitHubSelenideWikiTab goToPagesSoftAssertions() {
+    public SelenideWikiTab goToPagesSoftAssertions() {
         softAssertionsLink.click();
         return this;
     }
 
-    public GitHubSelenideWikiTab checkText(String expectedText) {
+    public SelenideWikiTab checkText(String expectedText) {
         pageContent.shouldHave(text(expectedText));
         return this;
     }

@@ -1,14 +1,14 @@
-package pages;
+package pages.github;
 
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.$;
 
-public class GitHubSelenideCodeTab {
+public class SelenideCodeTab {
     private final SelenideElement wikiTab = $("[href='/selenide/selenide/wiki']");
 
-    public GitHubSelenideWikiTab goToWikiTab() {
+    public SelenideWikiTab goToWikiTab() {
         wikiTab.click();
-        return new GitHubSelenideWikiTab();
+        return new SelenideWikiTab();
     }
 }

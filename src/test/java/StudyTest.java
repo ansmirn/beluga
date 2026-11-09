@@ -2,6 +2,8 @@ import pages.*;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import pages.github.MainPage;
+import pages.yandex.SearchPage;
 
 import static com.codeborne.selenide.Selenide.open;
 
@@ -15,7 +17,7 @@ public class StudyTest {
 
     @Test
     void studyPriceShouldBe47000Test() {
-        open("https://ya.ru/", SearchYandexPage.class)
+        open("https://ya.ru/", SearchPage.class)
                 .search("bulgakov qa")
                 .clickSearch()
                 .clickResults("ivanbulgakovqa.ru")
@@ -30,9 +32,9 @@ public class StudyTest {
 
     @Test
     void softAssertionsWikiShouldMentionJUnit5Test() {
-        GitHubMainPage gitHubPages = new GitHubMainPage();
+        MainPage gitHubPages = new MainPage();
 
-        open("https://github.com", GitHubMainPage.class)
+        open("https://github.com", MainPage.class)
                 .clickSearch()
                 .input("Selenide")
                 .openSelenideRepository()

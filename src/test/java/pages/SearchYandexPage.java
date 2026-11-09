@@ -1,23 +1,21 @@
-package Pages;
+package pages;
 
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.$;
 
-
-public class SearchYandexPages {
+public class SearchYandexPage {
     private final SelenideElement inputSearch = $("textarea.search3__input");
     private final SelenideElement buttonSearch = $("button.search3__button");
 
-
-    public SearchYandexPages search(String qwery){
-        inputSearch.setValue(qwery);
+    public SearchYandexPage search(String query) {
+        inputSearch.setValue(query);
         return this;
     }
 
-    public SearchYandexPagesResults clickSearch (){
+    public YandexSearchResultsPage clickSearch() {
         buttonSearch.click();
-        return new SearchYandexPagesResults();
+        return new YandexSearchResultsPage();
     }
 
 }

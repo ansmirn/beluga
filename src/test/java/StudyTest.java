@@ -1,52 +1,44 @@
-import Pages.*;
+import pages.*;
 import com.codeborne.selenide.Configuration;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.files.DownloadActions.click;
+import static com.codeborne.selenide.Selenide.open;
+
 
 public class StudyTest {
-
-  @Test
-  void studyPriceShouldBe47000Test() {
-    Configuration.browser = "chrome"; // выбор браузера
-    //Configuration.pageLoadTimeout = 100000; // таймаут прогрузки страницы
-    Configuration.timeout = 6000; // таймаут прогрузки элементов
-
-    BulgakovPage bulgakovPage = new BulgakovPage();
-    LavaTopPage lavaTopPage = new LavaTopPage();
+    @BeforeAll
+    static void setUp() {
+        Configuration.timeout = 6000; // таймаут прогрузки элементов
+    }
 
 
-    open("https://ya.ru/", SearchYandexPages.class)
-            .search("bulgakov qa")
-            .clickSearch()
-            .clickResults("ivanbulgakovqa.ru");
-    switchTo().window(1);
-    bulgakovPage
-            .clickPrice()
-            .clickVkat()
-            .goPay();
-    switchTo().window(2);
-    lavaTopPage.currencyDropdown()
-            .clickRub().checkSum();
-  }
+    @Test
+    void studyPriceShouldBe47000Test() {
+        open("https://ya.ru/", SearchYandexPage.class)
+                .search("bulgakov qa")
+                .clickSearch()
+                .clickResults("ivanbulgakovqa.ru")
+                .switchToWindow(1, BulgakovPage.class)
+                .clickPrice()
+                .clickWantToQa()
+                .goPay().switchToWindow(2, LavaTopPage.class)
+                .openCurrencyDropdown()
+                .selectRub()
+                .checkSum("₽ 47 000.00");
+    }
 
-  @Test
-  void SearchSelenide (){
-    GitHubPages gitHubPages = new GitHubPages();
+    @Test
+    void softAssertionsWikiShouldMentionJUnit5Test() {
+        GitHubMainPage gitHubPages = new GitHubMainPage();
 
-    open("https://github.com", GitHubPages.class)
-            .clickToInputSearch()
-            .inputSearchSelenide()
-            .clickSelenideToList()
-            .goToWikiTab()
-            .goToPagesSoftAssertions()
-            .goToPagesSoftAssertions();
-//    пишу камент тупа для создания новой бранч + ПР + камит +мерж
-//    прави по каметам в ПР
+        open("https://github.com", GitHubMainPage.class)
+                .clickSearch()
+                .input("Selenide")
+                .openSelenideRepository()
+                .goToWikiTab()
+                .goToPagesSoftAssertions()
+                .checkText("Using JUnit5 extend test class");
 
-
-}
+    }
 }

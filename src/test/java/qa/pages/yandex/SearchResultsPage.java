@@ -1,6 +1,6 @@
-package pages.yandex;
+package qa.pages.yandex;
 
-import pages.BasePage;
+import qa.pages.BasePage;
 
 import static com.codeborne.selenide.Selenide.$;
 

@@ -1,14 +1,15 @@
-package pages;
+package qa.pages;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$$;
 
 public class LavaTopPage {
     private final SelenideElement currencyDropdown = $("span.ant-select-selection-wrap");
-    private final SelenideElement rubOption = $(byText("RUB"));
+    private final ElementsCollection currencyOptions = $$("[role='option']");
     private final SelenideElement price = $("h3[data-at='H3']");
 
     public LavaTopPage openCurrencyDropdown() {
@@ -17,12 +18,12 @@ public class LavaTopPage {
     }
 
     public LavaTopPage selectRub() {
-        rubOption.click();
+        currencyOptions.filterBy(visible).findBy(exactText("RUB")).click();
         return this;
     }
 
     public LavaTopPage checkSum(String expectedSum) {
-        price.shouldHave(text(expectedSum));
+        price.shouldHave(exactText(expectedSum));
         return this;
     }
 }

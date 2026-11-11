@@ -1,4 +1,4 @@
-package pages.yandex;
+package qa.pages.yandex;
 
 import com.codeborne.selenide.SelenideElement;
 

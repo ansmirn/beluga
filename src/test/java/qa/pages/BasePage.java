@@ -1,4 +1,4 @@
-package pages;
+package qa.pages;
 
 import static com.codeborne.selenide.Selenide.page;
 import static com.codeborne.selenide.Selenide.switchTo;

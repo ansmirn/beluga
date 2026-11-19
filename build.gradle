@@ -13,6 +13,7 @@ dependencies {
     testImplementation(
             "com.codeborne:selenide:7.19.1",
             "org.junit.jupiter:junit-jupiter:5.9.1",
+            "net.datafaker:datafaker:2.7.0"
     )
 }
 

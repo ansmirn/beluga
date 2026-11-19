@@ -1,4 +1,4 @@
-package qa.pages;
+package qa.pages.course;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;

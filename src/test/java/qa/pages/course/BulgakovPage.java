@@ -1,6 +1,7 @@
-package qa.pages;
+package qa.pages.course;
 
 import com.codeborne.selenide.SelenideElement;
+import qa.pages.BasePage;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;

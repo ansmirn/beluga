@@ -1,10 +1,10 @@
-package qa.tests;
+package qa.mentor.tests;
 
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import qa.pages.course.BulgakovPage;
-import qa.pages.course.LavaTopPage;
+import qa.mentor.pages.BulgakovPage;
+import qa.mentor.pages.LavaTopPage;
 import qa.pages.yandex.SearchPage;
 
 import static com.codeborne.selenide.Selenide.open;

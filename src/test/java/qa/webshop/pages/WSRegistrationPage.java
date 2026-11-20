@@ -1,9 +1,10 @@
-package qa.pages.webShop;
+package qa.webshop.pages;
 
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 
 public class WSRegistrationPage {
     private final SelenideElement pageTitle = $("div.page-title");
@@ -17,14 +18,24 @@ public class WSRegistrationPage {
     private final SelenideElement registrationResultMessage = $("div.result");
     private final SelenideElement emailInHeader = $("div.header-links ul li");
 
+    public void register(String firstName, String lastName, String email, String password) {
+        selectGenderMale()
+                .enterFirstName(firstName)
+                .enterLastName(lastName)
+                .enterEmail(email)
+                .enterPassword(password)
+                .confirmPassword(password)
+                .clickRegisterButton();
+    }
+
     public WSRegistrationPage verifyRegistrationPageTitle() {
         pageTitle.shouldHave(text("Register"));
         return this;
     }
 
     public WSRegistrationPage selectGenderMale() {
-         maleGenderRadio.click();
-         return this;
+        maleGenderRadio.click();
+        return this;
     }
 
     public WSRegistrationPage enterFirstName(String firstName) {
@@ -53,11 +64,11 @@ public class WSRegistrationPage {
     }
 
     public WSRegistrationPage clickRegisterButton() {
-         registerButton.click();
-         return this;
+        registerButton.click();
+        return this;
     }
 
-    public WSRegistrationPage verifyRegistrationRusult() {
+    public WSRegistrationPage verifyRegistrationResult() {
         registrationResultMessage.shouldHave(text("Your registration completed"));
         return this;
     }

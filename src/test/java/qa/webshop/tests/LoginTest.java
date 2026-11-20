@@ -12,8 +12,8 @@ import static qa.webshop.config.Config.WEB_SHOP_URL;
 
 public class LoginTest {
     private static final Faker faker = new Faker();
-    private static String email = faker.internet().emailAddress();
-    private static String password = faker.credentials().password();
+    private static final String email = faker.internet().emailAddress();
+    private static final String password = faker.credentials().password();
 
     @BeforeAll
     static void registration() {

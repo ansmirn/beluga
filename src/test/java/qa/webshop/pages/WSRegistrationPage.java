@@ -18,7 +18,7 @@ public class WSRegistrationPage {
     private final SelenideElement registrationResultMessage = $("div.result");
     private final SelenideElement emailInHeader = $("div.header-links ul li");
 
-    public WSRegistrationPage register(String firstName, String lastName, String email, String password) {
+    public void register(String firstName, String lastName, String email, String password) {
         selectGenderMale()
                 .enterFirstName(firstName)
                 .enterLastName(lastName)
@@ -26,7 +26,6 @@ public class WSRegistrationPage {
                 .enterPassword(password)
                 .confirmPassword(password)
                 .clickRegisterButton();
-        return this;
     }
 
     public WSRegistrationPage verifyRegistrationPageTitle() {
@@ -69,7 +68,7 @@ public class WSRegistrationPage {
         return this;
     }
 
-    public WSRegistrationPage verifyRegistrationRusult() {
+    public WSRegistrationPage verifyRegistrationResult() {
         registrationResultMessage.shouldHave(text("Your registration completed"));
         return this;
     }

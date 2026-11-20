@@ -25,7 +25,7 @@ public class WSRegistrationTest {
                 .enterPassword(password)
                 .confirmPassword(password)
                 .clickRegisterButton()
-                .verifyRegistrationRusult()
+                .verifyRegistrationResult()
                 .verifyEmailInHeader(email);
 
     }

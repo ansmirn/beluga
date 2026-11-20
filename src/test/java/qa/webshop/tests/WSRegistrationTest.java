@@ -1,18 +1,17 @@
-package qa.tests;
+package qa.webshop.tests;
 
 import net.datafaker.Faker;
 import org.junit.jupiter.api.Test;
-import qa.pages.webShop.WSMainPage;
+import qa.webshop.pages.WSMainPage;
 
-import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
-import static qa.config.Config.WEB_SHOP_URL;
+import static qa.webshop.config.Config.WEB_SHOP_URL;
 
 public class WSRegistrationTest {
     private static final Faker faker = new Faker();
 
     @Test
-    void registrationNewUser() {
+    void registrationTest() {
         String password = faker.credentials().password();
         String email = faker.internet().emailAddress();
 
@@ -28,10 +27,6 @@ public class WSRegistrationTest {
                 .clickRegisterButton()
                 .verifyRegistrationRusult()
                 .verifyEmailInHeader(email);
-
-
-        System.out.println("1");
-
 
     }
 }

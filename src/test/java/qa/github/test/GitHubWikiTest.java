@@ -1,7 +1,7 @@
-package qa.tests;
+package qa.github.test;
 
 import org.junit.jupiter.api.Test;
-import qa.pages.github.MainPage;
+import qa.github.pages.MainPage;
 
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.webdriver;

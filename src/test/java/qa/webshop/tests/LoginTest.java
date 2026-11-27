@@ -34,6 +34,5 @@ public class LoginTest {
                 .enterPassword(password)
                 .clickLoginButton()
                 .verifyEmailInHeader(email);
-        System.out.println(1);
     }
 }
